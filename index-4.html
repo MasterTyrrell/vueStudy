@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="count += 1">数组：{{count}}</button>
+        <button v-on:dblclick="a1('1111',$event)"> 双击 </button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                count:0 
+            },
+            methods:{
+                a1:function(a1,e){
+                    console.log(e);
+                    alert(a1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

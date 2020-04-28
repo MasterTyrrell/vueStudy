@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch</h1>
+    <hr>
+    <div id="app">
+        <p>{{wendu}}</p>
+        <p>{{tishi}}</p>
+        <button @click="jiangdi">降低温度</button>
+        <button @click="tisheng">提升温度</button>
+    </div>
+    <script type="text/javascript">
+        var arr=['羽绒服','夹克长裙','短袖'];
+        function fun1(newValue,oldValue){
+                    if(newValue>26){
+                        this.tishi=arr[2];
+                    }else if(newValue>0){
+                        this.tishi = arr[1];
+                    }else{
+                        this.tishi = arr[0];
+                    }
+                }
+        var app = new Vue({
+            el:"#app",
+            data:function(){
+                return {wendu:1,tishi:"夹克长裙"}
+            },
+            methods:{
+                tisheng:function(){
+                    this.wendu+=5
+                },
+                jiangdi:function(){
+                    this.wendu-=5
+                }
+            },
+            watch:{
+                wendu:fun1
+            },
+        });
+        app.$watch('wendu',fun1);
+    </script>
+</body>
+</html>

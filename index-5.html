@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="input"/>
+            <p>message is {{input}}</p>
+        </div>
+        <div>
+            <textarea v-model="textarea"></textarea>
+            <p>message is {{textarea}}</p>
+        </div>
+        <div>
+            <input type="checkbox" value="one" v-model="checkbox">jack</checkbox>
+            <input type="checkbox" value="two" v-model="checkbox">jone</checkbox>
+            <input type="checkbox" value="three" v-model="checkbox">alan</checkbox>
+            <p>message is {{checkbox}}</p>
+        </div>
+        <div>
+            <input type="radio" value="男" v-model="radio">男
+            <input type="radio" value="女" v-model="radio">女
+            <p>message is {{radio}}</p>
+        </div>
+        <button type="button" @click="submit">提交</button>
+    </div>
+</body>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            input:"",
+            textarea:"",
+            checkbox:[],
+            radio:""
+            },
+        methods:{
+            submit:function(){
+                this.input="aaaa";
+                this.checkbox=["jack","jone"];
+                this.radio="男";
+            }
+        }
+    });
+</script>
+</html>

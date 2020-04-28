@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="../assets/js/vue.js"></script>
+<body>
+    <div id="author"></div>
+    <author></author>
+    <script type="text/javascript">
+        var authorURl = Vue.extend({
+            template:"<p><a :href='authorURL'>{{authorName}}</a></p>",
+            data:function(){
+                return{
+                authorURL:"http://www.baidu.com",
+                authorName:"百度"
+                }
+            }
+        });
+        new authorURl().$mount("#author");
+        new authorURl().$mount("author");
+    </script>
+</body>
+</html>

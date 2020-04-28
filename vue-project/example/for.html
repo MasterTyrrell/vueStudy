@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for</title>
+</head>
+<script type="text/javascript" src="../assets/js/vue.js"></script>
+<body>
+    <h1>for实例</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for="id in sortId">
+                 {{id}}   
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(student,index) in sortStudent">
+                {{index}}:{{student.name}}-{{student.age}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                id:[20,40,50,10,25],
+                students:[{name:"Alan",age:23},{name:"John",age:4},{name:"Luna",age:10}]
+            },
+            computed:{
+                sortId:function(){
+                    return this.id.sort(sout1);
+                },
+                sortStudent:function(){
+                    return sout2(this.students,'age');
+                }
+            }
+        });
+        function sout1(a,b){
+            return a-b;
+        }
+        function sout2(array,key){
+            return array.sort(function(a,b){
+                var x=a[key];
+                var y=b[key];
+                return x>y?1:(x<y?-1:0);
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue.directive</title>
+</head>
+<script type="text/javascript" src="../assets/js/vue.js"></script>
+<body>
+    <div id="app">
+        <div v-yyh="color">{{num}}</div>
+        <div><button @click="addNum">ADD</button></button></div>
+        <div><button onclick="unbind()">解绑</button></div>
+    </div>
+    <script type="text/javascript">
+        function unbind(){
+
+            app.$destroy();
+        }
+        // Vue.directive("yyh",function(el,binding){
+        //     console.log(el);
+        //     console.log(binding);   
+        //     el.style = "color:"+binding.value;
+        // })
+        Vue.directive("yyh",{
+            // 只调用一次，指定第一次绑定到元素调用
+            bind:function(e1,binding){
+                console.log("1-bind");
+                e1.style="color:red";
+            },
+            // 被绑定元素插入父节点调用
+            inserted:function(){
+                console.log("2-inserted");
+            },
+            // 被绑定元素所在的模板更新时调用
+            update:function(){
+                console.log("3-update");
+            },
+            // 被绑定元素完成一次更新周期后调用
+            componentUpdated:function(){
+                console.log("4-componentUpdated");
+            },
+            //只调用一次，指令与元素解绑调用
+            unbind:function(){
+                console.log("5-unbind");
+              
+            }
+        })
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:0,
+                color:"red"
+            },
+            methods:{
+                addNum:function(){
+                    this.num++;
+                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>

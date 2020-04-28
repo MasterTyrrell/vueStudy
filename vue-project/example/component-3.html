@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component-2</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component2</h1>
+    <hr>
+    <div id="app">
+        <panda></panda>
+
+    </div>
+    
+    <script type="text/javascript">
+    var city = {
+       template:`<p>chengdu</p>` 
+    }
+     var panda = {
+         template:`<div> <p>China</p>
+                <city></city>
+                </div>`,
+        components:{
+            city:city,
+        }
+     }
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            message:'China'
+        },
+        components:{
+            // 此处名称不能使用横杠，要换成驼峰命名
+            "panda":panda
+        }
+    })
+    </script>
+</body>
+</html>

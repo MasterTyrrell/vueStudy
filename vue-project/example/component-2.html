@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component-2</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component2</h1>
+    <hr>
+    <div id="app">
+        <component1 from-here="China"></component1>
+        <component2 here="China"></component2>
+        <component3 :here="message"></component3>
+
+    </div>
+    
+    <script type="text/javascript">
+   
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            message:'China'
+        },
+        components:{
+            // 此处名称不能使用横杠，要换成驼峰命名
+            "component1":{
+                template:`<div style='color:yellow'>{{fromHere}}</div>`,
+                props:['fromHere']
+            },
+            "component2":{
+                template:`<div style='color:green'>{{here}}</div>`,
+                props:['here']
+            },
+            "component3":{
+                template:`<div style='color:red'>{{here}}</div>`,
+                props:['here']
+            }
+        }
+    })
+    </script>
+</body>
+</html>

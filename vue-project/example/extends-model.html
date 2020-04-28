@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extends-model</title>
+<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixins</h1>
+    <hr>
+    <div id="app">
+        <p>${a}</p>
+        <button @click="add">add</button>
+    </div>
+    <script type="text/javascript">
+        var extendsObject = {
+            updated:function(){
+                console.log("我是插入的方法");
+            }
+        };
+        Vue.mixin({
+            updated:function(){
+                console.log("我是全局的update")
+            }
+        })
+        var app = new Vue({
+            el:"#app",
+            data:function(){
+                return {a:1}
+            },
+            methods:{
+                add:function(){
+                    this.a++;
+                }
+            },
+            updated:function(){
+             console.log("我是原生的update");  
+            },
+            extends:extendsObject,
+            delimiters:['${','}']
+        })
+    </script>
+</body>
+</html>

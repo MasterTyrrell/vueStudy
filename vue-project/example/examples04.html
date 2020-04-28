@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exampes04</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <temp>
+            <span slot="url">{{person.url}}</span>    
+            <span slot="name">{{person.name}}</span>    
+            <span slot="job">{{person.job}}</span>    
+        </temp>
+    </div>
+
+    <template id="temp1">
+        <div>
+            <p>网址：<slot name="url"></slot></p>
+            <p>姓名：<slot name="name"></slot></p>
+            <p>语言：<slot name="job"></slot></p>
+        </div>
+    </template>
+
+    <script type="text/javascript">
+        var temp={
+            template:"#temp1"
+        };
+        var app = new Vue({
+            el:"#app",
+            data:{
+                person:{
+                    url:"www.baidu.com",
+                    name:"yyh",
+                    job:"java"
+                }
+            },
+            components:{
+                temp
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>examples03</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    <p>{{a}}</p>
+    <button @click="add">add</button>
+    <button onclick="sub()">sub</button>
+    <button onclick="subOnce()">subOnce</button>
+    <button onclick="closeSub()">closeSub</button>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                a:1,
+            },
+            methods:{
+                add:function(){
+                    this.a++;
+                }
+            }
+        });
+        app.$on("sub",function(){
+            this.a--;
+        });
+        app.$once("subOnce",function(){
+            this.a--;
+        });
+
+        function sub(){
+            console.log(1);
+
+            app.$emit("sub");
+        }
+
+        function subOnce(){
+            console.log(2);
+            app.$emit("subOnce");
+        }
+
+        function closeSub(){
+            console.log(3);
+            app.$off('sub');
+        }
+    </script>
+</body>
+</html>

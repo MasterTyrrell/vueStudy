@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>模板</h1>
+    <hr>
+    <div id="app">
+       
+    </div>
+    <template id="t2">
+        <h2 style="color:blue">temaplate2</h2>
+    </template>
+    <script type="x-template" id="t3">
+        <h2 style="color:yellow">temaplate3</h2>
+    </script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            // template:`<h2 style="color:red">temaplate1</h2>`
+            // template:"#t2"
+             template:"#t3"
+        })
+    </script>
+</body>
+</html>

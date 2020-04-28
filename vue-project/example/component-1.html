@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component-1</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component1</h1>
+    <hr>
+    <div id="app">
+        <component1></component1>
+        <component2></component2>
+    </div>
+    
+    <script type="text/javascript">
+    Vue.component('component1',{
+        template:`<div style='color:red'>我是全局的组件</div>`
+    })
+    var vue = new Vue({
+        el:"#app",
+        components:{
+            "component2":{
+                template:`<div style='color:green'>我是局部的组件</div>`
+            }
+        }
+    })
+    </script>
+</body>
+</html>
